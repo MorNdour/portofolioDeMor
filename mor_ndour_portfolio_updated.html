@@ -1,0 +1,1420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mor Ndour - Data & AI Engineer</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: #667eea;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: #667eea;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        main {
+            padding-top: 80px;
+        }
+
+        .hero {
+            text-align: center;
+            padding: 6rem 0;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.3s forwards;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            transition: all 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .cta-button:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .section {
+            padding: 4rem 0;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section h2 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            color: #667eea;
+            position: relative;
+        }
+
+        .section h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(to right, #667eea, #764ba2);
+        }
+
+        .experience-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .experience-card {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .experience-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 60px rgba(102, 126, 234, 0.3);
+        }
+
+        .experience-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 5px;
+            height: 100%;
+            background: linear-gradient(to bottom, #667eea, #764ba2);
+        }
+
+        .experience-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.5rem;
+        }
+
+        .company {
+            color: #667eea;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .period {
+            color: #666;
+            font-style: italic;
+            margin-bottom: 1rem;
+        }
+
+        .mission {
+            font-weight: bold;
+            margin-bottom: 1rem;
+            color: #333;
+        }
+
+        .tasks {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .tasks li {
+            margin-bottom: 0.5rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .tasks li::before {
+            content: '→';
+            position: absolute;
+            left: 0;
+            color: #667eea;
+            font-weight: bold;
+        }
+
+        .tools {
+            background: rgba(102, 126, 234, 0.1);
+            padding: 0.5rem 1rem;
+            border-radius: 10px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .skill-category:hover {
+            transform: scale(1.05);
+        }
+
+        .skill-category h3 {
+            margin-bottom: 1rem;
+            color: #333;
+            font-size: 1.3rem;
+        }
+
+        .skill-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .project-grid {
+            display: grid;
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .project-card {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 15px 50px rgba(102, 126, 234, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 70px rgba(102, 126, 234, 0.4);
+        }
+
+        .project-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(to right, #84fab0, #8fd3f4);
+        }
+
+        .project-header {
+            margin-bottom: 2rem;
+        }
+
+        .project-header h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .project-title-with-links {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 1rem;
+        }
+        
+        .project-title-with-links h3 {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .project-title-with-links .project-github {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            text-decoration: none;
+            color: white;
+            font-size: 1.8rem;
+            transition: opacity 0.3s ease;
+        }
+
+        .project-title-with-links .project-github:hover {
+            opacity: 0.8;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .project-tag {
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.3rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .project-description {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-bottom: 2rem;
+            border-left: 4px solid #84fab0;
+        }
+
+        .project-details {
+            margin-top: 2rem;
+        }
+
+        .details-toggle {
+            background: rgba(255, 255, 255, 0.1);
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            color: white;
+            padding: 12px 24px;
+            border-radius: 25px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            width: 100%;
+            margin-bottom: 1rem;
+        }
+
+        .details-toggle:hover {
+            background: rgba(255, 255, 255, 0.2);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+
+        .details-toggle.active {
+            background: rgba(132, 250, 176, 0.3);
+            border-color: #84fab0;
+        }
+
+        .details-toggle i {
+            transition: transform 0.3s ease;
+        }
+
+        .details-toggle.active i {
+            transform: rotate(180deg);
+        }
+
+        .details-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.5s ease;
+        }
+
+        .details-content.active {
+            max-height: 2000px;
+        }
+
+        .project-workflow h4,
+        .project-benefits h4,
+        .project-bonus h4 {
+            font-size: 1.3rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+            padding-bottom: 0.5rem;
+        }
+
+        .workflow-steps {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .workflow-step {
+            display: flex;
+            gap: 1.5rem;
+            align-items: flex-start;
+        }
+
+        .step-number {
+            background: linear-gradient(135deg, #84fab0, #8fd3f4);
+            color: #333;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            flex-shrink: 0;
+        }
+
+        .step-content {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.2rem;
+            border-radius: 10px;
+            flex: 1;
+        }
+
+        .step-content h5 {
+            margin-bottom: 0.8rem;
+            font-size: 1.1rem;
+            color: #84fab0;
+        }
+
+        .agent-list {
+            list-style: none;
+            margin-top: 1rem;
+        }
+
+        .agent-list li {
+            margin-bottom: 0.8rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .agent-list li::before {
+            content: '🤖';
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .project-benefits {
+            margin: 2rem 0;
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1rem;
+        }
+
+        .benefit-item {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            transition: background 0.3s ease;
+        }
+
+        .benefit-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .benefit-item i {
+            font-size: 1.5rem;
+            color: #84fab0;
+        }
+
+        .project-bonus {
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+            border: 2px dashed rgba(255, 255, 255, 0.3);
+        }
+
+        .education-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .education-card {
+            background: linear-gradient(135deg, #ffecd2 0%, #fcb69f 100%);
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .education-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .education-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .education-header h3 {
+            font-size: 1.4rem;
+            color: #333;
+            margin-bottom: 0.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+        }
+
+        .education-period {
+            background: rgba(255, 255, 255, 0.8);
+            color: #667eea;
+            padding: 0.3rem 1rem;
+            border-radius: 20px;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: inline-block;
+        }
+
+        .education-institution {
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem;
+            font-weight: bold;
+            color: #667eea;
+            font-size: 1.1rem;
+        }
+
+        .education-description {
+            margin-bottom: 1.5rem;
+            text-align: left;
+            background: rgba(255, 255, 255, 0.7);
+            padding: 1rem;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .education-description p {
+            margin: 0;
+            line-height: 1.6;
+            color: #555;
+        }
+
+        .education-skills {
+            text-align: left;
+        }
+
+        .education-skills h4 {
+            color: #333;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            font-size: 1.1rem;
+        }
+
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .skill-item {
+            background: rgba(255, 255, 255, 0.9);
+            color: #333;
+            padding: 0.3rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            border: 1px solid rgba(102, 126, 234, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .skill-item:hover {
+            background: #667eea;
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        .contact-section {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 3rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            transition: background 0.3s ease;
+        }
+
+        .contact-item:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .contact-item i {
+            font-size: 1.5rem;
+        }
+
+        .mobile-menu {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+        }
+
+        .mobile-menu span {
+            width: 25px;
+            height: 3px;
+            background: #333;
+            margin: 3px 0;
+            transition: 0.3s;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .mobile-menu {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .contact-info {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .floating-icons {
+            position: fixed;
+            right: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+
+        .floating-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+            box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .floating-icon:hover {
+            transform: scale(1.1);
+        }
+
+        .profile-photo {
+            margin-bottom: 1rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        .profile-image {
+            width: 150px;
+            height: 170px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.1s forwards;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        @media (max-width: 768px) {
+            .profile-image {
+                width: 150px;
+                height: 150px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="logo">MOR NDOUR</div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#experience">Expérience</a></li>
+                <li><a href="#projets">Projets</a></li>
+                <li><a href="#competences">Compétences</a></li>
+                <li><a href="#formation">Formation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="mobile-menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </nav>
+    </header>
+
+    <div class="floating-icons">
+        <a href="mailto:ndourmor2@gmail.com" class="floating-icon" title="Email">
+            <i class="fas fa-envelope"></i>
+        </a>
+        <a href="tel:+33758267622" class="floating-icon" title="Téléphone">
+            <i class="fas fa-phone"></i>
+        </a>
+        <a href="https://www.linkedin.com/in/mor-ndour-93b530233/" class="floating-icon" title="LinkedIn">
+            <i class="fab fa-linkedin"></i>
+        </a>
+    </div>
+
+    <main>
+        <section id="accueil" class="hero">
+            <div class="container">
+                <div class="profile-photo">
+                    <img src="IMG_2160 2.jpg" alt="Mor Ndour - Photo de profil" class="profile-image">
+                </div>
+                <h2>MOR NDOUR</h2>
+                <p style="font-size: 1rem;"> Data Scientist | MlOps | GenAI Engineer</p>
+                <p style="font-size: 1rem; line-height: 1.7; margin-bottom: 1rem; max-width: 800px; margin-left: auto; margin-right: auto;">
+                    Ingénieur de conception en informatique, et titulaire d'un Master en Data & AI, je transforme les enjeux métiers en systèmes intelligents opérationnels. Mon approche combine <strong>expertise technique</strong> (conception, déploiement, MLOps) et <strong>alignement business</strong>, avec un focus sur l'impact tangible.
+                </p>
+                <p style="font-size: 1.1rem; margin-bottom: 2rem; color: rgb(25, 187, 237);">A la recherche d'un CDI en ML/AI Engineer Disponible  à partir d'octobre 2025</p>
+                <a href="#contact" class="cta-button">Me Contacter</a>
+            </div>
+        </section>
+
+        <section id="experience" class="section">
+            <div class="container">
+                <h2>Expériences Professionnelles</h2>
+                <div class="experience-grid">
+                    <div class="experience-card">
+                        <div class="experience-title">GenAI Engineer</div>
+                        <div class="company">LIPN - Laboratoire d'Informatique de Paris Nord</div>
+                        <div class="period">Mai 2025 — Présent | Paris, France</div>
+                        <div class="mission">
+                            <strong>Mission:</strong> Conception d'un système génératif d'explications de décisions de modèles ML en langage naturel à l'aide des LLMs.
+                        </div>
+                        <ul class="tasks">
+                            <li>Conception et entraînement d'un modèle de classification supervisée pour l'évaluation du risque individuel</li>
+                            <li>Élaboration de l'architecture fonctionnelle du système explicatif hybride combinant ML traditionnel et IA générative</li>
+                            <li>Intégration de techniques d'interprétabilité locales agnostiques au modèle (LIME, SHAP, Anchors)</li>
+                            <li>Développement d'un générateur d'explications en langage naturel basé sur LLM</li>
+                            <li>Implémentation d'un module de vérification de la cohérence logique des explications</li>
+                            <li>Personnalisation des explications selon le profil utilisateur via un système de RAG</li>
+                        </ul>
+                        <div class="tools">
+                            <strong>Technologies:</strong> Python, Numpy, Scikit-learn, Matplotlib, LLMs, Hugging Face, Spacy, LangChain, ChromaDB, FastAPI, Git
+                        </div>
+                    </div>
+
+                    <div class="experience-card">
+                        <div class="experience-title">Data Scientist Junior</div>
+                        <div class="company">Orange</div>
+                        <div class="period">Septembre 2023 — Juin 2024 | Dakar, Sénégal</div>
+                        <div class="mission">
+                            <strong>Mission:</strong> Conception et déploiement d'un moteur de recommandation de produits et de services.
+                        </div>
+                        <ul class="tasks">
+                            <li>Développement d'un pipeline d'ingestion de données multi-sources avec PySpark et SQL</li>
+                            <li>Préparation des données : nettoyage, normalisation et agrégation</li>
+                            <li>Analyse exploratoire pour identifier des insights clés via EDA</li>
+                            <li>Conception d'un système de recommandation basé sur la similarité de contenu</li>
+                            <li>Containerisation avec Docker et exposition des services via API REST</li>
+                            <li>Automatisation du déploiement pour assurer des mises à jour continues</li>
+                            <li>Supervision des APIs et des pipelines via stack Prometheus—Grafana</li>
+                        </ul>
+                        <div class="tools">
+                            <strong>Technologies:</strong> Python, Pandas, Matplotlib, Numpy, SQL, Hive, PySpark, Hadoop, Bash, MySQL, Docker, FastAPI, Git, Prometheus, Grafana
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="competences" class="section">
+            <div class="container">
+                <h2>Compétences Techniques</h2>
+                <div class="skills-grid">
+                    <div class="skill-category">
+                        <h3><i class="fas fa-robot"></i> AI Engineering</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Python</span>
+                            <span class="skill-tag">Scikit-learn</span>
+                            <span class="skill-tag">TensorFlow</span>
+                            <span class="skill-tag">Keras</span>
+                            <span class="skill-tag">LangChain</span>
+                            <span class="skill-tag">Hugging Face</span>
+                            <span class="skill-tag">LLM</span>
+                            <span class="skill-tag">GenAI</span>
+                            <span class="skill-tag">RAG</span>
+                            <span class="skill-tag">NLP</span>
+                            <span class="skill-tag">Computer Vision</span>
+                            <span class="skill-tag">Agentic AI</span>
+                            <span class="skill-tag">n8n</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-chart-line"></i> Data & Visualisation</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Power BI</span>
+                            <span class="skill-tag">SQL</span>
+                            <span class="skill-tag">Pandas</span>
+                            <span class="skill-tag">Numpy</span>
+                            <span class="skill-tag">Matplotlib</span>
+                            <span class="skill-tag">Prometheus</span>
+                            <span class="skill-tag">Grafana</span>
+                            <span class="skill-tag">Streamlit</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cogs"></i> MLOps & DevOps</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Docker</span>
+                            <span class="skill-tag">Kubernetes</span>
+                            <span class="skill-tag">MLflow</span>
+                            <span class="skill-tag">Apache Airflow</span>
+                            <span class="skill-tag">Jenkins</span>
+                            <span class="skill-tag">Terraform</span>
+                            <span class="skill-tag">Git</span>
+                            <span class="skill-tag">FastAPI</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-cloud"></i> Big Data & Cloud</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">Hadoop</span>
+                            <span class="skill-tag">Hive</span>
+                            <span class="skill-tag">PySpark</span>
+                            <span class="skill-tag">Kafka</span>
+                            <span class="skill-tag">ELK Stack</span>
+                            <span class="skill-tag">Databricks</span>
+                            <span class="skill-tag">AWS</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-database"></i> Bases de Données</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">MySQL</span>
+                            <span class="skill-tag">PostgreSQL</span>
+                            <span class="skill-tag">BigQuery</span>
+                            <span class="skill-tag">MongoDB</span>
+                            <span class="skill-tag">ChromaDB</span>
+                        </div>
+                    </div>
+
+                    <div class="skill-category">
+                        <h3><i class="fas fa-code"></i> Développement Web</h3>
+                        <div class="skill-tags">
+                            <span class="skill-tag">TypeScript</span>
+                            <span class="skill-tag">Angular</span>
+                            <span class="skill-tag">Django</span>
+                            <span class="skill-tag">Spring Boot</span>
+                            <span class="skill-tag">UML</span>
+                            <span class="skill-tag">Kanban</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="projets" class="section">
+            <div class="container">
+                <h2>Projets Phares</h2>
+                <div class="project-grid">
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3><i class="fas fa-comments"></i> Chatbot E-commerce Intelligent (RAG)</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">n8n</span>
+                                <span class="project-tag">RAG</span>
+                                <span class="project-tag">LLM</span>
+                                <span class="project-tag">Prompt Engineering</span>
+                                <span class="project-tag">E-commerce</span>
+                                <span class="project-tag">Pinecone</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Google Drive</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-description">
+                            <p><strong>Objectif :</strong> Développement d'un chatbot intelligent basé sur une architecture RAG pour fournir aux clients des réponses pertinentes en s'appuyant sur les documents du commerçant.</p>
+                        </div>
+                        
+                        <div class="project-details">
+                            <button class="details-toggle" onclick="toggleDetails('chatbot-details')">
+                                <span>Voir les détails du projet</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            
+                            <div class="details-content" id="chatbot-details">
+                                <div class="project-workflow">
+                                    <h4><i class="fas fa-cogs"></i> Architecture du Système</h4>
+                                    <div class="workflow-steps">
+                                        <div class="workflow-step">
+                                            <div class="step-number">1</div>
+                                            <div class="step-content">
+                                                <h5>Workflow d'indexation</h5>
+                                                <p>Surveillance automatique d'un dossier Google Drive. Dès qu'un document est ajouté, le workflow se déclenche : récupération, découpage, vectorisation et indexation dans la base vectorielle.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">2</div>
+                                            <div class="step-content">
+                                                <h5>Workflow de recherche et génération</h5>
+                                                <p>Endpoint exposé qui s'active lors d'une question client. Recherche de similarité dans la base vectorielle, puis transmission de la question et du contexte au LLM pour générer une réponse contextualisée.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">3</div>
+                                            <div class="step-content">
+                                                <h5>Intégration e-commerce</h5>
+                                                <p>API intégrée directement au site e-commerce, offrant aux clients une expérience fluide et enrichie avec des réponses conformes aux informations de la boutique.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-benefits">
+                                    <h4><i class="fas fa-chart-line"></i> Impact & Bénéfices</h4>
+                                    <div class="benefits-grid">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-users"></i>
+                                            <span>Amélioration de l'expérience client</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>Réponses instantanées 24h/24</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-robot"></i>
+                                            <span>Réponses contextualisées et pertinentes</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-sync"></i>
+                                            <span>Mise à jour automatique des connaissances</span>
+                                        </div>
+                                    </div>
+                                </div>
+            
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <h3><i class="fas fa-robot"></i> Automatisation RH avec Agents AI</h3>
+                            <div class="project-tags">
+                                <span class="project-tag">n8n</span>
+                                <span class="project-tag">Agents AI</span>
+                                <span class="project-tag">LLMs</span>
+                                <span class="project-tag">Few-short learning</span>
+                                <span class="project-tag">Postgres</span>
+                                <span class="project-tag">webhook</span>
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Automation</span>
+                                <span class="project-tag">Google Drive</span>
+                                <span class="project-tag">Google Sheets</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-description">
+                            <p><strong>Objectif :</strong> Automatiser le traitement des candidatures RH de la soumission à l'analyse du profil grâce aux Agents AI et n8n.</p>
+                        </div>
+                        
+                        <div class="project-details">
+                            <button class="details-toggle" onclick="toggleDetails('rh-details')">
+                                <span>Voir les détails du projet</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            
+                            <div class="details-content" id="rh-details">
+                                <div class="project-workflow">
+                                    <h4><i class="fas fa-cogs"></i> Architecture du Workflow</h4>
+                                    <div class="workflow-steps">
+                                        <div class="workflow-step">
+                                            <div class="step-number">1</div>
+                                            <div class="step-content">
+                                                <h5>Formulaire de candidature</h5>
+                                                <p>Endpoint n8n via webhook pour la soumission des dossiers</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">2</div>
+                                            <div class="step-content">
+                                                <h5>Vérification automatique</h5>
+                                                <p>Détection des candidatures déjà reçues avec notification immédiate</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">3</div>
+                                            <div class="step-content">
+                                                <h5>Traitement par 4 Agents AI en parallèle</h5>
+                                                <ul class="agent-list">
+                                                    <li><strong>Agent 1:</strong> Extraction et stockage des infos personnelles + envoi mail de confirmation</li>
+                                                    <li><strong>Agent 2:</strong> Analyse CV (compétences, expériences, formations) + génération résumé de profil</li>
+                                                    <li><strong>Agent 3:</strong> Récupération de la description du poste depuis Google Drive</li>
+                                                    <li><strong>Agent 4:</strong> Matching profil/poste avec score de compatibilité (1-10) + commentaire explicatif</li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">4</div>
+                                            <div class="step-content">
+                                                <h5>Stockage final</h5>
+                                                <p>Consolidation dans Excel avec scores et analyses complètes</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-benefits">
+                                    <h4><i class="fas fa-chart-line"></i> Bénéfices & Impact</h4>
+                                    <div class="benefits-grid">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-clock"></i>
+                                            <span>Gain de temps considérable pour les équipes RH</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-target"></i>
+                                            <span>Analyse automatisée et objective des profils</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-chart-bar"></i>
+                                            <span>Scoring intelligent avec justifications détaillées</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-file-excel"></i>
+                                            <span>Dashboard Excel centralisé pour le suivi</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-bonus">
+                                    <h4><i class="fas fa-plus-circle"></i> Fonctionnalité Bonus</h4>
+                                    <p>Workflow secondaire permettant aux RH de récupérer le CV d'un candidat par simple saisie de son email via endpoint dédié.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-header">
+                            <div class="project-title-with-links">
+                                <h3><i class="fas fa-chart-line"></i> Prédiction des Revenus - Restaurants TFI</h3>
+                                <a class="project-github" href="https://github.com/FallouMbengue/revenue_prediction.git" target="_blank" rel="noopener" title="Voir le repo GitHub">
+                                    <i class="fab fa-github"></i>
+                                </a>
+                            </div>
+                            <div class="project-tags">
+                                <span class="project-tag">Python</span>
+                                <span class="project-tag">Machine Learning</span>
+                                <span class="project-tag">Scikit-learn</span>
+                                <span class="project-tag">MLflow</span>
+                                <span class="project-tag">EDA</span>
+                                <span class="project-tag">Feature Engineering</span>
+                                <span class="project-tag">Pandas</span>
+                                <span class="project-tag">Matplotlib</span>
+                                <span class="project-tag">Numpy</span>
+                                <span class="project-tag">GitHub</span>
+                            </div>
+                        </div>
+                        
+                        <div class="project-description">
+                            <p><strong>Objectif :</strong> Développer un modèle fiable pour prédire les revenus des restaurants de TFI afin d'optimiser le choix de nouveaux sites d'implantation.</p>
+                        </div>
+                        
+                        <div class="project-details">
+                            <button class="details-toggle" onclick="toggleDetails('tfi-details')">
+                                <span>Voir les détails du projet</span>
+                                <i class="fas fa-chevron-down"></i>
+                            </button>
+                            
+                            <div class="details-content" id="tfi-details">
+                                <div class="project-workflow">
+                                    <h4><i class="fas fa-cogs"></i> Méthodologie & Approche</h4>
+                                    <div class="workflow-steps">
+                                        <div class="workflow-step">
+                                            <div class="step-number">1</div>
+                                            <div class="step-content">
+                                                <h5>Analyse Exploratoire des Données (EDA)</h5>
+                                                <p>Collecte, nettoyage et visualisation des données pour comprendre les patterns et identifier les variables clés influençant les revenus des restaurants.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">2</div>
+                                            <div class="step-content">
+                                                <h5>Feature Engineering</h5>
+                                                <p>Création de variables pertinentes (jour, mois, année d'ouverture) pour améliorer la performance des modèles de prédiction.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">3</div>
+                                            <div class="step-content">
+                                                <h5>Pipeline de Modélisation</h5>
+                                                <p>Mise en place d'un pipeline de traitement et de modélisation avec Scikit-learn pour la préparation automatisée des données et l'entraînement multi-modèles.</p>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="workflow-step">
+                                            <div class="step-number">4</div>
+                                            <div class="step-content">
+                                                <h5>Expérimentation & Suivi</h5>
+                                                <p>Expérimentation et suivi des modèles via MLflow pour le tracking des performances et la gestion des artefacts.</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="project-benefits">
+                                    <h4><i class="fas fa-chart-line"></i> Résultats & Impact</h4>
+                                    <div class="benefits-grid">
+                                        <div class="benefit-item">
+                                            <i class="fas fa-target"></i>
+                                            <span>Modèle fiable de prédiction des revenus</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-map-marker-alt"></i>
+                                            <span>Optimisation des choix d'implantation</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-chart-bar"></i>
+                                            <span>Décisions stratégiques basées sur les données</span>
+                                        </div>
+                                        <div class="benefit-item">
+                                            <i class="fas fa-robot"></i>
+                                            <span>Pipeline automatisé et reproductible</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="formation" class="section">
+            <div class="container">
+                <h2>Formation</h2>
+                <div class="education-grid">
+                    <div class="education-card">
+                        <div class="education-header">
+                            <h3><i class="fas fa-graduation-cap"></i> Master 2: Data Scale</h3>
+                            <div class="education-period">2024 — 2025</div>
+                        </div>
+                        <div class="education-institution">
+                            <i class="fas fa-university"></i>
+                            <span>Université Paris-Saclay (UVSQ)</span>
+                        </div>
+                        <div class="education-description">
+                            <p>Formation axée sur les architectures de données à grande échelle (data centers, edge computing), combinant ingénierie, analyse des données et apprentissage automatique. Études approfondies en bases de données distribuées, sécurité et cloud.</p>
+                        </div>
+                        <div class="education-skills">
+                            <h4><i class="fas fa-tools"></i> Compétences acquises</h4>
+                            <div class="skills-list">
+                                <span class="skill-item">Database (SQL, NoSQL)</span>
+                                <span class="skill-item">ETL</span>
+                                <span class="skill-item">Data Quality</span>
+                                <span class="skill-item">Data Analysis</span>
+                                <span class="skill-item">Machine Learning</span>
+                                <span class="skill-item">Deep Learning</span>
+                                <span class="skill-item">GenAI</span>
+                                <span class="skill-item">Service Web</span>
+                                <span class="skill-item">Services Cloud</span>
+                                <span class="skill-item">Securité des données</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="education-card">
+                        <div class="education-header">
+                            <h3><i class="fas fa-graduation-cap"></i> Ingénieur en Informatique</h3>
+                            <div class="education-period">2019 — 2024</div>
+                        </div>
+                        <div class="education-institution">
+                            <i class="fas fa-university"></i>
+                            <span>École Polytechnique de Thiès</span>
+                        </div>
+                        <div class="education-description">
+                            <p>Cursus ingénieur (5 ans, accrédité CTI) : formation généraliste en sciences de l’ingénierie suivie d’une spécialisation en informatique, réalisée en alternance et orientée vers les projets concrets et stages en entreprise</p>
+                        </div>
+                        <div class="education-skills">
+                            <h4><i class="fas fa-tools"></i> Compétences acquises</h4>
+                            <div class="skills-list">
+                                <span class="skill-item">Software Engineering</span>
+                                <span class="skill-item">DevOps</span>
+                                <span class="skill-item">Cloud Computing</span>
+                                <span class="skill-item">Méthodes Agiles</span>
+                                <span class="skill-item">Machine Learning</span>
+                                <span class="skill-item">Deep Learning</span>
+                                <span class="skill-item">Réseau </span>
+                                <span class="skill-item">Administration Système</span>
+                                <span class="skill-item">Gestion de Projet</span>
+                                <span class="skill-item">Big Data</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div style="text-align: center; margin-top: 3rem;">
+                    <h3 style="color: #667eea; margin-bottom: 1rem;">Langues</h3>
+                    <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
+                        <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); padding: 1rem 2rem; border-radius: 15px;">
+                            <strong>Français:</strong> Natif
+                        </div>
+                        <div style="background: linear-gradient(135deg, #a8edea 0%, #fed6e3 100%); padding: 1rem 2rem; border-radius: 15px;">
+                            <strong>Anglais:</strong> B2
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="section contact-section">
+            <div class="container">
+                <h2 style="color: white;">Contactez-moi</h2>
+                <p style="font-size: 1.2rem; margin-bottom: 2rem;">Intéressé par mes compétences ? N'hésitez pas à me contacter !</p>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span>ndourmor2@gmail.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span>+33 758 26 76 22</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <span>Paris, Île-de-France, France</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fab fa-linkedin"></i>
+                        <span>LinkedIn</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Smooth scrolling
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Mobile menu toggle
+        const mobileMenu = document.querySelector('.mobile-menu');
+        const navLinks = document.querySelector('.nav-links');
+
+        mobileMenu.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+        });
+
+        // Intersection Observer for animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.experience-card, .skill-category, .education-card, .project-card').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.style.background = 'rgba(255, 255, 255, 0.98)';
+            } else {
+                header.style.background = 'rgba(255, 255, 255, 0.95)';
+            }
+        });
+
+        // Toggle project details function
+        function toggleDetails(detailsId) {
+            const detailsContent = document.getElementById(detailsId);
+            const toggleButton = document.querySelector(`[onclick="toggleDetails('${detailsId}')"]`);
+            const toggleIcon = toggleButton.querySelector('i');
+            const toggleText = toggleButton.querySelector('span');
+            
+            if (detailsContent.classList.contains('active')) {
+                detailsContent.classList.remove('active');
+                toggleButton.classList.remove('active');
+                toggleText.textContent = 'Voir les détails du projet';
+            } else {
+                detailsContent.classList.add('active');
+                toggleButton.classList.add('active');
+                toggleText.textContent = 'Masquer les détails';
+            }
+        }
+    </script>
+</body>
+</html>
